@@ -1,0 +1,13 @@
+---
+interface Props {
+    bgColor: string;
+    title: string;
+    img: string;
+}
+const { bgColor, title, img }: Props = Astro.props;
+---
+
+<div class={`gap-2 flex flex-row rounded-2xl w-fit px-3 py-1 items-center ${bgColor}`}>
+    <img class="w-4" src={img} alt="Stack Tecnologico">
+    <h3 class="flex items-center text-[15px] text-center text-white">{title}</h3>
+</div>
