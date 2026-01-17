@@ -5,6 +5,8 @@ import ProfileDescription from '../components/ProfileDescription.astro';
 import Layout from '../layouts/Layout.astro';
 import Sidebar from '../components/sidebar.astro';
 import WorkExperience from '../components/WorkExperience.astro';
+import Proyects from '../components/Proyects.astro';
+import AboutMe from '../components/AboutMe.astro';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -13,19 +15,15 @@ import WorkExperience from '../components/WorkExperience.astro';
 <Layout class="bg-[#F8F8F8]">
 	<div class="container mx-auto py-8">
 		<div class="flex flex-row gap-8 ">
-			<div class="basis-3/12">
+			<div class="basis-3/12 flex flex-col gap-8 sticky top-8 self-start">
 				<Profile/>
-			</div>
-			<div class="basis-9/12">
-				<ProfileDescription/>
-			</div>
-		</div>
-		<div class="flex flex-row gap-8 mt-8">
-			<div class="basis-3/12">
 				<Sidebar/>
 			</div>
-			<div class="basis-9/12">
+			<div class="basis-9/12 flex flex-col gap-8">
+				<ProfileDescription/>
 				<WorkExperience/>
+				<Proyects/>
+				<AboutMe/>
 			</div>
 		</div>
 	</div>
