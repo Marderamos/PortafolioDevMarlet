@@ -1,0 +1,12 @@
+---
+interface Props {
+    color: string;
+    text: string;
+    link: string;
+}
+const { color, text, link }: Props = Astro.props;
+
+---
+<div class="rounded-2xl border border-solid w-full mt-6 p-5" style={`border-color: ${color}`}>
+    <a href={link} class="text-2xl" style={`color: ${color}`} target="_blank">{text}</a>
+</div>
