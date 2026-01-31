@@ -1,20 +1,84 @@
-<div class="flex flex-col justify-between rounded-3xl border-gray-500 border-[0.5px] border-solid p-5 items-center w-full">
-    <ul class="w-full text-center *:border-gray-500 *:hover:border-[0.5px] *:border-solid *:rounded-full flex flex-col gap-4 *:transition *:duration-150 *:ease-in-out">
-        <li class="bg-[#f7c67a]">
-            <a class="text-2xl" href="#profile">Perfil</a>
+<div
+    class="flex flex-col justify-between rounded-3xl border-gray-500 border-[0.5px] border-solid p-5 items-center w-full"
+>
+    <ul
+        id="sidebar-nav"
+        class="w-full text-center *:border-gray-500 *:hover:border-[0.5px] *:border-solid *:rounded-full flex flex-col gap-4 *:transition *:duration-150 *:ease-in-out"
+    >
+        <li class="sidebar-item" data-section="profile" data-color="#f7c67a">
+            <a class="text-2xl block py-1" href="#profile">Perfil</a>
         </li>
-        <li class="hover:bg-[#ed8364]">
-            <a class="text-2xl" href="#profile">Experiencia</a>
+        <li class="sidebar-item" data-section="experience" data-color="#ed8364">
+            <a class="text-2xl block py-1" href="#experience">Experiencia</a>
         </li>
-        <li class="hover:bg-[#98abbc]">
-            <a class="text-2xl" href="#profile">Proyectos</a>
+        <li class="sidebar-item" data-section="projects" data-color="#98abbc">
+            <a class="text-2xl block py-1" href="#projects">Proyectos</a>
         </li>
-        <li class="hover:bg-[#a65c8d]">
-            <a class="text-2xl" href="#profile">Sobre mí</a
-                ></li>
-        <li class="hover:bg-[#ef937c]">
-            <a class="text-2xl" href="#profile">Contacto</a>
+        <li class="sidebar-item" data-section="about" data-color="#a65c8d">
+            <a class="text-2xl block py-1" href="#about">Sobre mí</a>
+        </li>
+        <li class="sidebar-item" data-section="contact" data-color="#ef937c">
+            <a class="text-2xl block py-1" href="#contact">Contacto</a>
         </li>
     </ul>
-
 </div>
+
+<script is:inline>
+    (function () {
+        const sidebarItems = document.querySelectorAll(".sidebar-item");
+        const sectionIds = [
+            "profile",
+            "experience",
+            "projects",
+            "about",
+            "contact",
+        ];
+
+        function updateSectionActive() {
+            let currentSection = "profile";
+            const offset = 250;
+
+            for (let i = 0; i < sectionIds.length; i++) {
+                const id = sectionIds[i];
+                const section = document.getElementById(id);
+
+                if (section) {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top <= offset) {
+                        currentSection = id;
+                    }
+                }
+            }
+
+            // Si estamos casi al final de la página, activar contacto
+            const scrollHeight = document.documentElement.scrollHeight;
+            const scrollTop = window.scrollY;
+            const clientHeight = window.innerHeight;
+
+            if (scrollTop + clientHeight >= scrollHeight - 100) {
+                currentSection = "contact";
+            }
+
+            sidebarItems.forEach(function (item) {
+                const sectionId = item.getAttribute("data-section");
+                const color = item.getAttribute("data-color") || "transparent";
+
+                if (sectionId === currentSection) {
+                    item.style.setProperty("background-color", color, "important");
+                } else {
+                    item.style.setProperty("background-color", "transparent", "important");
+                }
+            });
+        }
+
+        // Ejecutar al cargar y al hacer scroll
+        updateSectionActive();
+        window.addEventListener("scroll", updateSectionActive);
+    })();
+</script>
+
+<style>
+    .sidebarItem {
+        transition: background-color 0.3s ease;
+    }
+</style>

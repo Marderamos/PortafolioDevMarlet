@@ -1,33 +1,35 @@
 ---
-
-import Profile from '../components/Profile.astro';
-import ProfileDescription from '../components/ProfileDescription.astro';
-import Layout from '../layouts/Layout.astro';
-import Sidebar from '../components/sidebar.astro';
-import WorkExperience from '../components/WorkExperience.astro';
-import Proyects from '../components/Proyects.astro';
-import AboutMe from '../components/AboutMe.astro';
-import Contact from '../components/Contact.astro';
+import Profile from "../components/Profile.astro";
+import ProfileDescription from "../components/ProfileDescription.astro";
+import Layout from "../layouts/Layout.astro";
+import Sidebar from "../components/sidebar.astro";
+import WorkExperience from "../components/WorkExperience.astro";
+import Proyects from "../components/Proyects.astro";
+import AboutMe from "../components/AboutMe.astro";
+import Contact from "../components/Contact.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout class="bg-[#F8F8F8]" >
-	<div class="container mx-auto py-8" >
-		<div class="flex flex-col md:flex-row gap-8 ">
-			<div class="basis-full md:basis-3/12 flex flex-col gap-8 md:sticky md:top-8 md:self-start">
-				<Profile/>
+<Layout class="bg-[#F8F8F8]">
+	<div class="container mx-auto py-8">
+		<div class="flex flex-col md:flex-row gap-8 px-2 md:px-0">
+			<div
+				class="basis-full md:basis-3/12 flex flex-col gap-8 md:sticky md:top-8 md:self-start"
+			>
+				<Profile />
 				<div class="hidden md:block">
-				<Sidebar/>
+					<Sidebar />
 				</div>
 			</div>
 			<div class="basis-full md:basis-9/12 flex flex-col gap-8">
-				<ProfileDescription/>
-				<WorkExperience/>
-				<Proyects/>
-				<AboutMe/>
-				<Contact/>
+				
+				<section id="profile"><ProfileDescription /></section>
+				<section id="experience"><WorkExperience /></section>
+				<section id="projects"><Proyects /></section>
+				<section id="about"><AboutMe /></section>
+				<section id="contact"><Contact /></section>
 			</div>
 		</div>
 	</div>
